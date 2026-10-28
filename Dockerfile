@@ -15,12 +15,14 @@ ARG ZARCHIVE_REF=v0.1.2
 ARG EXTRACT_XISO_REF=build-202609111233
 RUN git clone --depth 1 --branch "$ZARCHIVE_REF" https://github.com/Exzap/ZArchive /tmp/zarchive \
  && cmake -S /tmp/zarchive -B /tmp/zarchive/build -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/tools \
  && cmake --build /tmp/zarchive/build -j"$(nproc)" \
- && cmake --install /tmp/zarchive/build --prefix /opt/tools
+ && cmake --install /tmp/zarchive/build
 RUN git clone --depth 1 --branch "$EXTRACT_XISO_REF" https://github.com/XboxDev/extract-xiso /tmp/extract-xiso \
  && cmake -S /tmp/extract-xiso -B /tmp/extract-xiso/build -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/tools \
  && cmake --build /tmp/extract-xiso/build -j"$(nproc)" \
- && cmake --install /tmp/extract-xiso/build --prefix /opt/tools
+ && cmake --install /tmp/extract-xiso/build
 
 # --- runtime ------------------------------------------------------------------
 FROM debian:trixie-slim
