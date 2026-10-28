@@ -1,0 +1,17 @@
+services:
+  nashi:
+    build: .
+    image: nashi
+    restart: unless-stopped
+    ports:
+      # localhost only; there's no auth. Use "8080:8080" to expose it on your LAN.
+      - "127.0.0.1:8080:8080"
+    environment:
+      NASHI_MAX_JOBS: "1"     # conversions running at once (chdman already uses all cores)
+      NASHI_TTL_SECS: "3600"  # finished outputs are deleted after this long untouched
+    volumes:
+      # uploads + outputs; needs room for ~2x your biggest ISO
+      - nashi-work:/work
+
+volumes:
+  nashi-work:

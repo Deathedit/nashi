@@ -1,0 +1,19 @@
+[package]
+name = "nashi"
+version = "0.1.0"
+edition = "2024"
+description = "Drag & drop ISO converter: PS2 → CHD, Xbox 360 → ZAR"
+
+[dependencies]
+anyhow = "1"
+axum = "0.8"
+futures-util = "0.3"
+percent-encoding = "2"
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+tokio-stream = { version = "0.1", features = ["sync"] }
+tokio-util = { version = "0.7", features = ["io"] }
+tower-http = { version = "0.6", features = ["fs", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["v4", "serde"] }

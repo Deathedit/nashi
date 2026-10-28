@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>nashi</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍐</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>nashi <span class="kana">ナシ</span></h1>
+    <p class="tagline">Drop an ISO, get a <b>.chd</b> (PS2) or <b>.zar</b> (Xbox 360).</p>
+  </header>
+
+  <main>
+    <label id="drop" class="drop" for="picker">
+      <input id="picker" type="file" accept=".iso" multiple hidden>
+      <span class="drop-icon" aria-hidden="true">⇩</span>
+      <span class="drop-title">Drop ISOs here</span>
+      <span class="drop-sub">or click to pick files</span>
+    </label>
+
+    <div class="platform" role="radiogroup" aria-label="Platform">
+      <span>Platform</span>
+      <label><input type="radio" name="platform" value="auto" checked> Auto-detect</label>
+      <label><input type="radio" name="platform" value="ps2"> PS2 → CHD</label>
+      <label><input type="radio" name="platform" value="x360"> Xbox 360 → ZAR</label>
+    </div>
+
+    <ul id="jobs" class="jobs"></ul>
+  </main>
+
+  <template id="job-template">
+    <li class="job">
+      <div class="job-head">
+        <span class="badge"></span>
+        <span class="name"></span>
+        <button class="remove" title="Cancel / remove" aria-label="Cancel or remove">✕</button>
+      </div>
+      <div class="bar"><div class="fill"></div></div>
+      <div class="job-foot">
+        <span class="status"></span>
+        <a class="download" hidden>Download</a>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
