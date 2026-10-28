@@ -1,7 +1,6 @@
 services:
   nashi:
-    build: .
-    image: nashi
+    image: ghcr.io/deathedit/nashi:latest
     restart: unless-stopped
     ports:
       # localhost only; there's no auth. Use "8080:8080" to expose it on your LAN.

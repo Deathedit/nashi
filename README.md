@@ -21,10 +21,14 @@ cargo run --release
 
 ## Run with docker compose
 
+Uses the image CI publishes to `ghcr.io/deathedit/nashi`.
+
 ```sh
-docker compose up --build -d
+docker compose pull && docker compose up -d
 # open http://localhost:8080
 ```
+
+To build locally instead: `docker build -t ghcr.io/deathedit/nashi:latest .`
 
 ## Config (env vars)
 
